@@ -1,0 +1,1301 @@
+/* ================= ЦВЕТОВАЯ ПАЛИТРА И БАЗА ================= */
+:root {
+    --emerald: #023E2A;
+    --emerald-dark: #012217;
+    --gold: #D4AF37;
+    --gold-light: #F3E5AB;
+    --beige: #F5F5DC;
+    --text-light: #EAEAEA;
+    --font-title: 'Cormorant Garamond', serif;
+    --font-text: 'Montserrat', sans-serif;
+}
+
+/* Кастомный курсор-орнамент (через SVG) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23D4AF37" stroke-width="2"><circle cx="12" cy="12" r="6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>') 12 12, auto;
+}
+
+body {
+    font-family: var(--font-text);
+    background-color: var(--emerald-dark);
+    color: var(--beige);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ================= АНИМАЦИИ ================= */
+@keyframes fadeOutLoader {
+    0%, 80% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
+}
+@keyframes spinTunduk {
+    0% { transform: rotate(0deg) scale(0.8); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(0.8); }
+}
+@keyframes floatBg {
+    0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+    10% { opacity: 0.15; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(-20vh) rotate(360deg) scale(1.5); opacity: 0; }
+}
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.9); }
+    100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
+}
+@keyframes textReveal {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ================= ПРЕЛОАДЕР (Тундук) ================= */
+.preloader {
+    position: fixed;
+    inset: 0;
+    background: var(--emerald-dark);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOutLoader 2.5s forwards;
+    pointer-events: none;
+}
+.tunduk {
+    width: 100px;
+    height: 100px;
+    border: 4px solid var(--gold);
+    border-radius: 50%;
+    position: relative;
+    animation: spinTunduk 2s linear infinite;
+}
+.tunduk::before, .tunduk::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 4px;
+    background: var(--gold);
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%);
+}
+.tunduk::after {
+    transform: translateY(-50%) rotate(90deg);
+}
+.cross {
+    position: absolute;
+    width: 120%;
+    height: 4px;
+    background: var(--gold);
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%) rotate(45deg);
+}
+.cross:nth-child(2) { transform: translateY(-50%) rotate(-45deg); }
+
+/* ================= ПЛАВАЮЩИЕ ФОНОВЫЕ ЭЛЕМЕНТЫ (Этника) ================= */
+.floating-patterns {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.pattern {
+    position: absolute;
+    color: var(--gold);
+    font-family: var(--font-title);
+    font-size: 4rem;
+    opacity: 0;
+    animation: floatBg 15s linear infinite;
+}
+.pattern:nth-child(1) { left: 10%; animation-duration: 20s; animation-delay: 0s; }
+.pattern:nth-child(2) { left: 30%; animation-duration: 16s; animation-delay: -5s; font-size: 3rem; }
+.pattern:nth-child(3) { left: 60%; animation-duration: 22s; animation-delay: -10s; }
+.pattern:nth-child(4) { left: 80%; animation-duration: 18s; animation-delay: -2s; font-size: 5rem; }
+
+ /* ================= ШАПКА ================= 
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(to bottom, rgba(1, 34, 23, 0.9), transparent);
+}
+.logo {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+.lang-phone {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-weight: 600;
+} */
+
+
+/* ================= НОВЫЙ ЧИСТЫЙ ХЕДЕР ================= */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2000;
+    background: linear-gradient(to bottom, rgba(1, 34, 23, 0.95), rgba(1, 34, 23, 0));
+    backdrop-filter: blur(10px);
+}
+
+.main-header .logo {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* --- ПК ВЕРСИЯ --- */
+.desktop-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.desktop-menu a {
+    text-decoration: none;
+    color: var(--beige);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.desktop-menu a:hover {
+    color: var(--gold);
+}
+
+.desktop-contacts {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: var(--beige);
+    font-weight: 600;
+}
+
+.desktop-contacts .lang {
+    color: var(--gold);
+}
+
+/* --- МОБИЛЬНЫЙ БУРГЕР И МЕНЮ --- */
+.menu-checkbox {
+    display: none;
+}
+
+.hamburger {
+    display: none; /* Скрыто на ПК */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 2001; /* Поверх всплывающего меню */
+}
+
+.hamburger .line {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--gold);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Спрятано за экраном */
+    width: 100vw;
+    height: 100vh;
+    background: rgba(1, 34, 23, 0.98);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.5s ease;
+    z-index: 1999;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+.mobile-nav a {
+    text-decoration: none;
+    color: var(--beige);
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.mobile-nav a:hover {
+    color: var(--gold);
+    transform: scale(1.1);
+}
+
+.mobile-contacts {
+    margin-top: 50px;
+    text-align: center;
+    color: var(--beige);
+    font-size: 1.2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    padding-top: 20px;
+    width: 80%;
+}
+
+.mobile-lang {
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+/* --- АНИМАЦИЯ ПРИ КЛИКЕ НА БУРГЕР --- */
+.menu-checkbox:checked ~ .mobile-overlay {
+    right: 0; /* Меню выезжает */
+}
+
+.menu-checkbox:checked ~ .hamburger .line1 {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.menu-checkbox:checked ~ .hamburger .line2 {
+    opacity: 0;
+}
+
+.menu-checkbox:checked ~ .hamburger .line3 {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНА (ВСТРОЕННАЯ) --- */
+@media (max-width: 900px) {
+    .main-header {
+        padding: 15px 20px;
+    }
+    .desktop-menu,
+    .desktop-contacts {
+        display: none; /* Прячем ПК-элементы */
+    }
+    .hamburger {
+        display: flex; /* Показываем бургер */
+    }
+
+
+/* ================= БЛОК 1: ГЛАВНЫЙ ЭКРАН ================= */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    background: linear-gradient(rgba(1, 34, 23, 0.7), rgba(1, 34, 23, 0.8)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+    z-index: 1;
+}
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: 5rem;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    animation: textReveal 1.5s ease forwards;
+    animation-delay: 2.5s;
+    opacity: 0;
+}
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    animation: textReveal 1.5s ease forwards;
+    animation-delay: 3s;
+    opacity: 0;
+}
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--emerald-dark);
+    background: var(--gold);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    animation: pulseGlow 2s infinite;
+}
+.btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: var(--gold-light);
+}
+
+/* ================= БЛОК 2: ФИЛОСОФИЯ (Сплит) ================= */
+.about {
+    display: flex;
+    min-height: 80vh;
+    background: var(--emerald);
+    position: relative;
+    z-index: 1;
+}
+.about-img {
+    flex: 1;
+    background: url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80') center/cover;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+    transition: transform 0.5s ease;
+}
+.about-img:hover { transform: scale(1.02); }
+.about-text {
+    flex: 1;
+    padding: 100px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.about-text h2 {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--beige);
+}
+
+
+/* ================= БЛОК: НАШИ ЗАЛЫ (ВИДЕО-ХАК) ================= */
+.halls-section {
+    padding: 100px 20px;
+    background: #000; /* Черный фон, пока видео грузятся */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Чтобы видео не вылезали за границы */
+    min-height: 80vh; /* Минимальная высота блока */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Контейнер и стили для видео-фона --- */
+.halls-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Видео строго под контентом */
+}
+
+.bg-vid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Видео растягивается, заполняя блок */
+    opacity: 0; /* Все видео скрыты по умолчанию */
+    transition: opacity 0.8s ease-in-out; /* Плавное перетекание видео */
+}
+
+/* Дефолтное видео показываем всегда */
+.vid-default {
+    opacity: 1;
+}
+
+/* Общее затемнение поверх видео для читаемости текста */
+.vid-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.9) 100%);
+    z-index: 1; /* Оверлей поверх видео, но под текстом */
+}
+
+/* --- МАГИЯ CSS СЕЛЕКТОРА :HAS() --- */
+/* Если наведена мышка на ЛЮБУЮ карточку, скрываем дефолтное видео */
+.halls-section:has(.hall-item:hover) .vid-default {
+    opacity: 0;
+}
+
+/* Если наведена мышка на карточку 1, показываем видео 1 */
+.halls-section:has(.hall-item-1:hover) .vid-hall {
+    opacity: 1;
+}
+
+/* Если наведена мышка на карточку 2, показываем видео 2 */
+.halls-section:has(.hall-item-2:hover) .vid-vip {
+    opacity: 1;
+}
+
+/* Если наведена мышка на карточку 3, показываем видео 3 */
+.halls-section:has(.hall-item-3:hover) .vid-veranda {
+    opacity: 1;
+}
+
+/* --- Стили контента поверх видео --- */
+.halls-content-wrapper {
+    position: relative;
+    z-index: 10; /* Контент поверх оверлея */
+    width: 100%;
+    max-width: 1300px;
+}
+
+.halls-title {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.halls-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.halls-container {
+    display: flex;
+    gap: 30px;
+    height: 450px; /* Высота аккордеона */
+    margin: 0 auto;
+}
+
+.hall-item {
+    position: relative;
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    /* Убрали background-image, теперь фон прозрачный */
+    background: rgba(1, 34, 23, 0.3); /* Легкий этнический оттенок карточки */
+    backdrop-filter: blur(5px); /* Эффект стекла для карточки */
+}
+
+/* Затемнение внутри самой карточки, чтобы текст h3 читался в свернутом виде */
+.hall-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%);
+    z-index: 1;
+    transition: opacity 0.4s ease;
+}
+
+/* При наведении карточка расширяется */
+.hall-item:hover {
+    flex: 2.5;
+    border-color: var(--gold);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    background: rgba(1, 34, 23, 0.1); /* Делаем карточку прозрачнее, чтобы видеть видео сзади */
+}
+/* При наведении убираем внутреннее затемнение карточки */
+.hall-item:hover::before {
+    opacity: 0;
+}
+
+.hall-info {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    z-index: 2;
+    text-align: left;
+}
+
+.hall-info h3 {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    transition: all 0.4s ease;
+}
+
+.hall-desc {
+    font-size: 1rem;
+    color: var(--beige);
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    transition-delay: 0.1s;
+}
+
+/* Показываем описание при расширении */
+.hall-item:hover .hall-desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+.hall-item:hover h3 {
+    color: var(--gold);
+}
+
+
+
+
+/* ================= БЛОК 3: ИНТЕРАКТИВНОЕ МЕНЮ (Сайдбар) ================= */
+.menu-section {
+    padding: 100px 20px;
+    /* background: var(--emerald-dark); */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.menu-section h2 {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 50px;
+}
+
+input[type="radio"] { display: none; }
+
+/* Новый Layout для меню (слева кнопки, справа контент) */
+.menu-layout {
+    display: flex;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.tabs-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 280px;
+    flex-shrink: 0;
+    /* Делаем меню липким, чтобы оно ездило за пользователем при скролле блюд */
+    position: sticky;
+    top: 100px; 
+}
+
+.tab-label {
+    padding: 15px 25px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--gold);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 600;
+    background: rgba(2, 62, 42, 0.4);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tab-label:hover { 
+    background: rgba(212, 175, 55, 0.2); 
+    border-color: var(--gold);
+    transform: translateX(5px); /* Приятный сдвиг вправо при наведении */
+}
+
+/* Логика включения активной вкладки (для всех 15) */
+#tab1:checked ~ .menu-layout .tabs-sidebar .label1,
+#tab2:checked ~ .menu-layout .tabs-sidebar .label2,
+#tab3:checked ~ .menu-layout .tabs-sidebar .label3,
+#tab4:checked ~ .menu-layout .tabs-sidebar .label4,
+#tab5:checked ~ .menu-layout .tabs-sidebar .label5,
+#tab6:checked ~ .menu-layout .tabs-sidebar .label6,
+#tab7:checked ~ .menu-layout .tabs-sidebar .label7,
+#tab8:checked ~ .menu-layout .tabs-sidebar .label8,
+#tab9:checked ~ .menu-layout .tabs-sidebar .label9,
+#tab10:checked ~ .menu-layout .tabs-sidebar .label10,
+#tab11:checked ~ .menu-layout .tabs-sidebar .label11,
+#tab12:checked ~ .menu-layout .tabs-sidebar .label12,
+#tab13:checked ~ .menu-layout .tabs-sidebar .label13,
+#tab14:checked ~ .menu-layout .tabs-sidebar .label14,
+#tab15:checked ~ .menu-layout .tabs-sidebar .label15 {
+    background: var(--gold);
+    color: var(--emerald-dark);
+    border-color: var(--gold);
+    transform: translateX(15px); /* Активная вкладка слегка выдвинута */
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.menu-content-area {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.menu-content { 
+    display: none; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; 
+}
+
+/* Связь радио-кнопок с отображением контента */
+#tab1:checked ~ .menu-layout .menu-content-area .content1,
+#tab2:checked ~ .menu-layout .menu-content-area .content2,
+#tab3:checked ~ .menu-layout .menu-content-area .content3,
+#tab4:checked ~ .menu-layout .menu-content-area .content4,
+#tab5:checked ~ .menu-layout .menu-content-area .content5,
+#tab6:checked ~ .menu-layout .menu-content-area .content6,
+#tab7:checked ~ .menu-layout .menu-content-area .content7,
+#tab8:checked ~ .menu-layout .menu-content-area .content8,
+#tab9:checked ~ .menu-layout .menu-content-area .content9,
+#tab10:checked ~ .menu-layout .menu-content-area .content10,
+#tab11:checked ~ .menu-layout .menu-content-area .content11,
+#tab12:checked ~ .menu-layout .menu-content-area .content12,
+#tab13:checked ~ .menu-layout .menu-content-area .content13,
+#tab14:checked ~ .menu-layout .menu-content-area .content14,
+#tab15:checked ~ .menu-layout .menu-content-area .content15 { 
+    display: grid; 
+    animation: textReveal 0.5s ease; 
+}
+
+/* Карточки блюд (остаются те же сочные стили) */
+.dish-card {
+    background: rgba(2, 62, 42, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.dish-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    border-color: var(--gold);
+}
+.dish-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+.dish-card:hover .dish-img { transform: scale(1.1); }
+.dish-info { padding: 20px; text-align: left; }
+.dish-title { font-family: var(--font-title); font-size: 1.8rem; color: var(--gold-light); margin-bottom: 10px; }
+.dish-price { font-size: 1.4rem; font-weight: bold; color: var(--gold); margin-top: 15px; }
+.badge { background: #8B0000; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; position: absolute; top: 10px; right: 10px; z-index: 2;}
+
+/* АДАПТИВНОСТЬ: Переопределение для мобилок */
+@media (max-width: 900px) {
+    .menu-layout { flex-direction: column; gap: 20px; }
+    
+    .tabs-sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto; /* Горизонтальный скролл на телефоне */
+        position: static;
+        padding-bottom: 15px;
+        /* Прячем ползунок скролла для красоты */
+        scrollbar-width: none; 
+    }
+    .tabs-sidebar::-webkit-scrollbar { display: none; }
+    
+    .tab-label { 
+        white-space: nowrap; /* Чтобы текст вкладок не переносился на новую строку */
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+    .tab-label:hover { transform: translateY(-5px); }
+    
+    #tab1:checked ~ .menu-layout .tabs-sidebar .label1,
+    /* ... и все остальные ... */
+    #tab15:checked ~ .menu-layout .tabs-sidebar .label15 {
+        transform: translateY(-5px); 
+    }
+}
+
+
+
+/* ================= БЛОК: БЛЮДА НЕДЕЛИ ================= */
+.week-specials {
+    padding: 100px 20px;
+    /* background: radial-gradient(circle at center, var(--emerald), var(--emerald-dark)); */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    border-top: 2px dashed rgba(212, 175, 55, 0.3);
+    border-bottom: 2px dashed rgba(212, 175, 55, 0.3);
+}
+
+.specials-title {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.specials-title span {
+    font-size: 2.5rem;
+    color: var(--gold-light);
+    opacity: 0.7;
+    animation: spinTunduk 10s linear infinite; /* Медленное вращение узоров */
+}
+
+.specials-subtitle {
+    font-size: 1.2rem;
+    color: var(--beige);
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.specials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.special-card {
+    background: rgba(1, 34, 23, 0.8);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    text-align: left;
+}
+
+.special-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+    border-color: var(--gold);
+}
+
+.special-img {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: transform 0.6s ease;
+}
+
+.special-card:hover .special-img {
+    transform: scale(1.08); /* Плавное увеличение фото */
+}
+
+.special-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--gold);
+    color: var(--emerald-dark);
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.special-info {
+    padding: 25px;
+    position: relative;
+    z-index: 2; /* Чтобы текст был поверх увеличенной картинки */
+    background: rgba(1, 34, 23, 0.9); /* Защитный фон от наезда картинки */
+}
+
+.special-info h4 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+}
+
+.special-info p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    min-height: 48px; /* Выравнивание по высоте */
+}
+
+.special-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding-top: 15px;
+}
+
+.special-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.special-btn {
+    text-decoration: none;
+    color: var(--beige);
+    border: 1px solid var(--gold);
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.special-btn:hover {
+    background: var(--gold);
+    color: var(--emerald-dark);
+}
+
+/* ================= БЛОК: БЕГУЩАЯ ГАЛЕРЕЯ ================= */
+.atmosphere-gallery {
+    padding: 100px 0; /* Убираем боковые отступы, чтобы лента шла от края до края экрана */
+    background: var(--emerald);
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Обрезаем всё, что выходит за рамки экрана */
+}
+
+.atmosphere-title {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.atmosphere-subtitle {
+    font-size: 1.2rem;
+    color: var(--beige);
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Контейнер строки (скрывает вылезающие элементы) */
+.gallery-row {
+    width: 100vw;
+    overflow: hidden;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Лента с фотографиями */
+.gallery-track {
+    display: flex;
+    gap: 30px;
+    width: max-content; /* Ширина подстраивается под все фото */
+}
+
+/* АНИМАЦИИ: Секрет плавности */
+/* Строка 1 движется влево */
+.track-left {
+    animation: scrollLeft 35s linear infinite;
+}
+/* Строка 2 движется вправо (начинаем с -50% и едем к 0) */
+.track-right {
+    animation: scrollRight 35s linear infinite;
+}
+
+/* Остановка анимации при наведении мышки! */
+.gallery-row:hover .gallery-track {
+    animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Сдвигаем ровно на половину (где начинается дубликат) */
+}
+
+@keyframes scrollRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+/* Стили самой фотографии */
+.gallery-item {
+    width: 350px; /* Ширина одной карточки */
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    /* Добавляем тень для объема */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Изображение заполняет блок не искажаясь */
+    transition: transform 0.6s ease;
+}
+
+/* Легкое затемнение, которое пропадает при наведении */
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 34, 23, 0.3);
+    transition: 0.4s ease;
+}
+
+/* Эффект при наведении на конкретное фото */
+.gallery-item:hover {
+    border-color: var(--gold);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+    transform: translateY(-10px) scale(1.02); /* Фото слегка "всплывает" */
+    z-index: 10;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover::after {
+    opacity: 0; /* Убираем затемнение */
+}
+
+/* Адаптивность для мобильных телефонов */
+@media (max-width: 768px) {
+    .gallery-item {
+        width: 250px; /* Уменьшаем фото на телефонах */
+        height: 180px;
+    }
+    .gallery-track {
+        gap: 15px;
+    }
+    /* Делаем прокрутку чуть быстрее на телефонах для динамики */
+    .track-left { animation-duration: 25s; }
+    .track-right { animation-duration: 25s; }
+}
+
+
+
+/* ================= БЛОК: О НАС И КАРТА ================= */
+.about-contact {
+    padding: 100px 20px;
+    position: relative;
+    z-index: 1;
+    border-top: 1px dashed rgba(212, 175, 55, 0.3);
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.about__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+/* --- Левая часть: Текст --- */
+.about__text {
+    flex: 1;
+    text-align: left;
+}
+
+.about__text h2 {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
+
+.about__text h2 span {
+    color: var(--gold-light);
+    font-size: 2.5rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.about__text p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-info-list li {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--beige);
+}
+
+.contact-info-list strong {
+    color: var(--gold);
+    min-width: 130px;
+}
+
+/* --- Правая часть: Карта --- */
+.map-wrapper-side {
+    flex: 1;
+    min-width: 300px;
+}
+
+.map-frame {
+    position: relative;
+    padding: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    background: rgba(1, 34, 23, 0.6);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    height: 450px;
+    box-sizing: border-box;
+}
+
+.map-inner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Темная магия для карты */
+.map-inner iframe {
+    filter: invert(90%) hue-rotate(180deg) sepia(30%) contrast(110%);
+    transition: filter 0.5s ease;
+}
+
+.map-frame:hover .map-inner iframe {
+    filter: invert(90%) hue-rotate(180deg) sepia(10%) contrast(120%);
+}
+
+/* Декоративные уголки */
+.corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--gold);
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+.top-left { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.top-right { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.bottom-right { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+.map-frame:hover .corner {
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* --- Адаптивность для телефона --- */
+@media (max-width: 900px) {
+    .about__content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .about__text {
+        text-align: center;
+    }
+    .contact-info-list li {
+        justify-content: center;
+    }
+    .contact-info-list strong {
+        min-width: auto;
+    }
+    .map-wrapper-side {
+        width: 100%;
+    }
+    .map-frame {
+        height: 350px;
+    }
+}
+
+/* ================= ПОДВАЛ (Footer) ================= */
+footer {
+    background: #00110A;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--gold);
+    position: relative;
+    z-index: 1;
+}
+.footer-info { max-width: 400px; }
+.footer-info h4 { font-family: var(--font-title); color: var(--gold); font-size: 2rem; margin-bottom: 20px; }
+.qr-code {
+    width: 150px; height: 150px;
+    border: 2px dashed var(--gold);
+    display: flex; justify-content: center; align-items: center;
+    text-align: center; font-size: 0.8rem; padding: 10px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .about { flex-direction: column; }
+    .about-img { min-height: 400px; clip-path: none; }
+    .hero h1 { font-size: 3rem; }
+    .gallery-grid { column-count: 1; }
+    footer { flex-direction: column; gap: 30px; text-align: center; }
+}
+
+/* ================= ПЛАВАЮЩИЙ QR-КОД ================= */
+.qr-code {
+    position: fixed; /* Закрепляем на экране */
+    bottom: 30px;
+    right: 30px;
+    width: 140px; 
+    height: 140px;
+    background: rgba(2, 62, 42, 0.7); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px); /* Эффект матового стекла */
+    border: 2px dashed var(--gold);
+    border-radius: 15px; /* Слегка скруглим углы */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    text-align: center; 
+    font-size: 0.8rem; 
+    padding: 10px;
+    z-index: 1000; /* Поверх всех остальных элементов */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Глубокая тень */
+    transition: all 0.4s ease;
+    animation: floatUpDown 4s ease-in-out infinite; /* Анимация левитации */
+}
+
+/* Эффект при наведении мышки */
+.qr-code:hover {
+    transform: scale(1.1) translateY(-10px);
+    border: 2px solid var(--gold-light);
+    background: rgba(2, 62, 42, 0.95);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); /* Золотое свечение */
+}
+
+/* Анимация плавного парения */
+@keyframes floatUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Адаптивность: на мобильных делаем его меньше, чтобы не мешал читать сайт */
+@media (max-width: 768px) {
+    .qr-code {
+        width: 90px;
+        height: 90px;
+        font-size: 0.6rem;
+        bottom: 20px;
+        right: 20px;
+        border-radius: 50%; /* На телефоне сделаем круглым для эстетики */
+    }
+}
+
+
+
+
+
+/* ================= АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) ================= */
+@media (max-width: 900px) {
+    /* ... (ваши другие мобильные стили для меню и т.д. оставляем без изменений) ... */
+
+    /* Вертикальный аккордеон для залов */
+    .halls-container {
+        flex-direction: column; /* Выстраиваем карточки в столбик */
+        height: 650px; /* Фиксированная высота контейнера для плавного перераспределения */
+        gap: 10px;
+    }
+
+    .hall-item {
+        width: 100%;
+        flex: 1; /* В спокойном состоянии все карточки узкие и равные по высоте */
+        min-height: 80px; /* Чтобы сжатые карточки не исчезали полностью */
+        transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        padding: 15px;
+    }
+
+    /* При тапе (наведении) на телефоне карточка расширяется по вертикали */
+    .hall-item:hover,
+    .hall-item:focus,
+    .hall-item:active {
+        flex: 4; /* Занимает в 4 раза больше высоты, чем остальные */
+        transform: none; /* Убираем scale из прошлой версии */
+    }
+
+    /* Логика текста внутри мобильной карточки */
+    .hall-info {
+        /* Центрируем заголовок по вертикали, когда карточка сжата */
+        bottom: 50%;
+        transform: translateY(50%);
+        transition: all 0.5s ease;
+    }
+
+    /* Когда карточка раскрыта — опускаем заголовок вниз, освобождая место для картинки/видео */
+    .hall-item:hover .hall-info {
+        bottom: 20px;
+        transform: translateY(0);
+    }
+
+    .hall-info h3 {
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+        text-align: center; /* На мобилке лучше смотрится по центру */
+    }
+
+    /* Описание прячем и плавно показываем при раскрытии */
+    .hall-desc {
+        opacity: 0;
+        transform: translateY(15px);
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        display: -webkit-box;
+        /* -webkit-line-clamp: 4; Ограничиваем текст 4 строками */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .hall-item:hover .hall-desc {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.2s; /* Легкая задержка для красоты эффекта */
+    }
+
+    /* Видео на мобильных оставляем только дефолтное для экономии трафика и батареи */
+    .bg-vid { display: none; }
+    .vid-default { display: block; opacity: 1; }
+}
+}
