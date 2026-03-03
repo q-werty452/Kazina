@@ -392,28 +392,27 @@ header {
     color: var(--beige);
 }
 
-
-/* ================= БЛОК: НАШИ ЗАЛЫ (ВИДЕО-ХАК) ================= */
+/* ================= БЛОК: НАШИ ЗАЛЫ (ВИДЕО-ХАК С ВНУТРЕННИМ ФОТО) ================= */
 .halls-section {
     padding: 100px 20px;
-    background: #000; /* Черный фон, пока видео грузятся */
+    background: #000;
     text-align: center;
     position: relative;
     z-index: 1;
-    overflow: hidden; /* Чтобы видео не вылезали за границы */
-    min-height: 80vh; /* Минимальная высота блока */
+    overflow: hidden;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* --- Контейнер и стили для видео-фона --- */
+/* --- Видео-фон (Логика без изменений) --- */
 .halls-video-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Видео строго под контентом */
+    z-index: -1;
 }
 
 .bg-vid {
@@ -421,59 +420,34 @@ header {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Видео растягивается, заполняя блок */
-    opacity: 0; /* Все видео скрыты по умолчанию */
-    transition: opacity 0.8s ease-in-out; /* Плавное перетекание видео */
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
 }
 
-/* Дефолтное видео показываем всегда */
 .vid-default {
     opacity: 1;
 }
 
-/* Общее затемнение поверх видео для читаемости текста */
 .vid-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.9) 100%);
-    z-index: 1; /* Оверлей поверх видео, но под текстом */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.95) 100%);
+    z-index: 1;
 }
 
-/* --- МАГИЯ CSS СЕЛЕКТОРА :HAS() --- */
-/* Если наведена мышка на ЛЮБУЮ карточку, скрываем дефолтное видео */
-.halls-section:has(.hall-item:hover) .vid-default {
-    opacity: 0;
-}
+/* --- МАГИЯ CSS СЕЛЕКТОРА :HAS() ДЛЯ ФОНА --- */
+.halls-section:has(.hall-item:hover) .vid-default { opacity: 0; }
+.halls-section:has(.hall-item-1:hover) .vid-hall { opacity: 1; }
+.halls-section:has(.hall-item-2:hover) .vid-vip { opacity: 1; }
+.halls-section:has(.hall-item-3:hover) .vid-veranda { opacity: 1; }
 
-/* Если наведена мышка на карточку 1, показываем видео 1 */
-.halls-section:has(.hall-item-1:hover) .vid-hall {
-    opacity: 1;
-}
-
-/* Если наведена мышка на карточку 2, показываем видео 2 */
-.halls-section:has(.hall-item-2:hover) .vid-vip {
-    opacity: 1;
-}
-
-/* Если наведена мышка на карточку 3, показываем видео 3 */
-.halls-section:has(.hall-item-3:hover) .vid-veranda {
-    opacity: 1;
-}
-
-/* --- Стили контента поверх видео --- */
+/* --- Стили контента --- */
 .halls-content-wrapper {
     position: relative;
-    z-index: 10; /* Контент поверх оверлея */
+    z-index: 10;
     width: 100%;
     max-width: 1300px;
-}
-
-.halls-title {
-    font-family: var(--font-title);
-    font-size: 4rem;
-    color: var(--gold);
-    margin-bottom: 10px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .halls-subtitle {
@@ -487,7 +461,7 @@ header {
 .halls-container {
     display: flex;
     gap: 30px;
-    height: 450px; /* Высота аккордеона */
+    height: 480px; /* Немного увеличил высоту */
     margin: 0 auto;
 }
 
@@ -496,43 +470,69 @@ header {
     flex: 1;
     border-radius: 20px;
     overflow: hidden;
-    transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s ease;
     cursor: pointer;
     border: 1px solid rgba(212, 175, 55, 0.2);
-    /* Убрали background-image, теперь фон прозрачный */
-    background: rgba(1, 34, 23, 0.3); /* Легкий этнический оттенок карточки */
-    backdrop-filter: blur(5px); /* Эффект стекла для карточки */
+    background: rgba(1, 34, 23, 0.2); /* Едва заметный фон в покое */
+    backdrop-filter: blur(10px); /* Сильный блюр в покое */
 }
 
-/* Затемнение внутри самой карточки, чтобы текст h3 читался в свернутом виде */
-.hall-item::before {
-    content: '';
+/* --- НОВОЕ: ВНУТРЕННЯЯ КАРТИНКА БЛОКА --- */
+.hall-item-image {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%);
-    z-index: 1;
-    transition: opacity 0.4s ease;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Скрыта по умолчанию */
+    transition: opacity 0.5s ease-in-out, transform 0.6s ease;
+    z-index: 1; /* Поверх блюра, но под текстом */
 }
 
-/* При наведении карточка расширяется */
+
+/* --- НОВОЕ: ВНУТРЕННЯЯ КАРТИНКА БЛОКА (Теперь видна всегда) --- */
+.hall-item-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    
+    /* ИЗМЕНЕНИЕ ЗДЕСЬ: Картинка видна всегда, но слегка затемнена (80% видимости) */
+    opacity: 0.8; 
+    
+    transition: opacity 0.5s ease-in-out, transform 0.6s ease;
+    z-index: 1;
+}
+
+/* --- ПОВЕДЕНИЕ ПРИ НАВЕДЕНИИ --- */
 .hall-item:hover {
     flex: 2.5;
     border-color: var(--gold);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    background: rgba(1, 34, 23, 0.1); /* Делаем карточку прозрачнее, чтобы видеть видео сзади */
+    box-shadow: 0 15px 45px rgba(0,0,0,0.7);
+    transform: translateY(-5px);
 }
-/* При наведении убираем внутреннее затемнение карточки */
+
+.hall-item:hover .hall-item-image {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
 .hall-item:hover::before {
     opacity: 0;
 }
 
+/* Центрирование заголовка в покое */
 .hall-info {
     position: absolute;
     bottom: 30px;
     left: 30px;
     right: 30px;
-    z-index: 2;
+    z-index: 2; /* Поверх картинки */
     text-align: left;
+    transition: all 0.4s ease;
 }
 
 .hall-info h3 {
@@ -541,9 +541,10 @@ header {
     color: var(--gold-light);
     margin-bottom: 10px;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-    transition: all 0.4s ease;
+    transition: color 0.4s ease;
 }
 
+/* Описание прячем */
 .hall-desc {
     font-size: 1rem;
     color: var(--beige);
@@ -554,15 +555,15 @@ header {
     transition-delay: 0.1s;
 }
 
-/* Показываем описание при расширении */
+/* При наведении показываем описание */
 .hall-item:hover .hall-desc {
     opacity: 1;
     transform: translateY(0);
 }
+
 .hall-item:hover h3 {
     color: var(--gold);
 }
-
 
 
 
@@ -734,8 +735,7 @@ input[type="radio"] { display: none; }
 }
 
 
-
-/* ================= БЛОК: БЛЮДА НЕДЕЛИ ================= */
+/* ================= БЛОК: БЛЮДА НЕДЕЛИ (СЛАЙДЕР) ================= */
 .week-specials {
     padding: 100px 20px;
     /* background: radial-gradient(circle at center, var(--emerald), var(--emerald-dark)); */
@@ -761,7 +761,7 @@ input[type="radio"] { display: none; }
     font-size: 2.5rem;
     color: var(--gold-light);
     opacity: 0.7;
-    animation: spinTunduk 10s linear infinite; /* Медленное вращение узоров */
+    animation: spinTunduk 10s linear infinite;
 }
 
 .specials-subtitle {
@@ -772,14 +772,33 @@ input[type="radio"] { display: none; }
     text-transform: uppercase;
 }
 
-.specials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+/* --- Обертка и Сетка слайдера --- */
+.specials-slider-wrapper {
+    position: relative;
     max-width: 1300px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
 }
 
+.specials-grid {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 20px 5px 40px 5px;
+    
+    /* Прячем ползунок скролла */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.specials-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Сама карточка --- */
 .special-card {
     background: rgba(1, 34, 23, 0.8);
     border: 1px solid rgba(212, 175, 55, 0.2);
@@ -789,6 +808,11 @@ input[type="radio"] { display: none; }
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     text-align: left;
+    
+    /* Фиксируем ширину для карусели */
+    flex: 0 0 auto; 
+    width: 300px; 
+    scroll-snap-align: start;
 }
 
 .special-card:hover {
@@ -797,6 +821,7 @@ input[type="radio"] { display: none; }
     border-color: var(--gold);
 }
 
+/* --- Внутренности карточки (Картинки, тексты, кнопки) --- */
 .special-img {
     height: 250px;
     background-size: cover;
@@ -806,7 +831,7 @@ input[type="radio"] { display: none; }
 }
 
 .special-card:hover .special-img {
-    transform: scale(1.08); /* Плавное увеличение фото */
+    transform: scale(1.08);
 }
 
 .special-tag {
@@ -827,8 +852,8 @@ input[type="radio"] { display: none; }
 .special-info {
     padding: 25px;
     position: relative;
-    z-index: 2; /* Чтобы текст был поверх увеличенной картинки */
-    background: rgba(1, 34, 23, 0.9); /* Защитный фон от наезда картинки */
+    z-index: 2;
+    background: rgba(1, 34, 23, 0.9);
 }
 
 .special-info h4 {
@@ -843,7 +868,7 @@ input[type="radio"] { display: none; }
     color: var(--text-light);
     margin-bottom: 20px;
     line-height: 1.5;
-    min-height: 48px; /* Выравнивание по высоте */
+    min-height: 48px;
 }
 
 .special-bottom {
@@ -875,6 +900,44 @@ input[type="radio"] { display: none; }
     color: var(--emerald-dark);
 }
 
+/* --- Стрелочки слайдера --- */
+.slider-arrow {
+    background: var(--gold);
+    color: var(--emerald-dark);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: 0.3s ease;
+}
+
+.slider-arrow:hover {
+    background: var(--gold-light);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-arrow { left: -20px; }
+.next-arrow { right: -20px; }
+
+/* --- Адаптивность для телефона --- */
+@media (max-width: 900px) {
+    .slider-arrow {
+        display: none; /* Прячем стрелки на телефоне (там скролл пальцем) */
+    }
+    .special-card {
+        width: 280px; /* Делаем карточку чуть уже под экран мобилки */
+    }
+}
 /* ================= БЛОК: БЕГУЩАЯ ГАЛЕРЕЯ ================= */
 .atmosphere-gallery {
     padding: 100px 0; /* Убираем боковые отступы, чтобы лента шла от края до края экрана */
