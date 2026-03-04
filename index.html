@@ -136,7 +136,41 @@
     </div>
 </section>
 
+<section class="hero-slider">
+        
+    <div class="hero-slide active" style="background-image: linear-gradient(rgba(1, 34, 23, 0.6), rgba(1, 34, 23, 0.8)), url('https://images.unsplash.com/photo-1544025162-8111149f12d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="hero-content">
+            <h1>Сокровище вкуса<br>и истинных традиций</h1>
+            <p>Гостеприимство предков в современной атмосфере</p>
+            <a href="#menu" class="btn">Смотреть меню</a>
+        </div>
+    </div>
 
+    <div class="hero-slide" style="background-image: linear-gradient(rgba(1, 34, 23, 0.6), rgba(1, 34, 23, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="hero-content">
+            <h1>Атмосфера<br>Ханского Шатра</h1>
+            <p>Уникальный этнический дизайн и живая музыка</p>
+            <a href="#atmosphere" class="btn">Посмотреть залы</a>
+        </div>
+    </div>
+
+    <div class="hero-slide" style="background-image: linear-gradient(rgba(1, 34, 23, 0.6), rgba(1, 34, 23, 0.8)), url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="hero-content">
+            <h1>Идеальное место<br>для ваших Тоев</h1>
+            <p>Проведем ваш праздник на высшем уровне</p>
+            <a href="#contacts" class="btn">Забронировать дату</a>
+        </div>
+    </div>
+
+    <button class="hero-arrow hero-prev">❮</button>
+    <button class="hero-arrow hero-next">❯</button>
+
+    <div class="hero-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</section>
 
 <section class="menu-section">
     <h2 class="specials-title"><span>❖</span> Наше меню<span>❖</span></h2>
@@ -977,6 +1011,62 @@
         }
     });
 </script>
+
+
+
+<script>
+    // Логика для Главного Баннера (Hero Slider)
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dots .dot');
+    const heroPrev = document.querySelector('.hero-prev');
+    const heroNext = document.querySelector('.hero-next');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+        // Убираем активный класс у всех
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Закольцовываем (если дошли до конца — идем в начало)
+        if (index >= slides.length) currentSlide = 0;
+        else if (index < 0) currentSlide = slides.length - 1;
+        else currentSlide = index;
+
+        // Показываем нужный слайд
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    // Автопрокрутка каждые 5 секунд
+    function startSlideShow() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    // Сброс таймера при ручном клике (чтобы не перескочило сразу)
+    function resetInterval() {
+        clearInterval(slideInterval);
+        startSlideShow();
+    }
+
+    heroNext.addEventListener('click', () => { nextSlide(); resetInterval(); });
+    heroPrev.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+    // Клики по точкам
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            resetInterval();
+        });
+    });
+
+    // Запускаем магию!
+    startSlideShow();
+</script>
+
 
 
 
