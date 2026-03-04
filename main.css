@@ -1365,34 +1365,157 @@ input[type="radio"] { display: none; }
     }
 }
 
-/* ================= ПОДВАЛ (Footer) ================= */
-footer {
-    /* background: #00110A; */
-    padding: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--gold);
+
+
+/* ================= ПОДВАЛ (FOOTER) ================= */
+.main-footer {
+    /* background: #011810;  */
+    padding: 80px 20px 20px;
+    border-top: 2px solid var(--gold); /* Тонкая золотая линия сверху */
+    color: var(--beige);
     position: relative;
     z-index: 1;
 }
-.footer-info { max-width: 400px; }
-.footer-info h4 { font-family: var(--font-title); color: var(--gold); font-size: 2rem; margin-bottom: 20px; }
-.qr-code {
-    width: 150px; height: 150px;
-    border: 2px dashed var(--gold);
-    display: flex; justify-content: center; align-items: center;
-    text-align: center; font-size: 0.8rem; padding: 10px;
+
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Автоматические колонки */
+    gap: 50px;
+    margin-bottom: 60px;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-    .about { flex-direction: column; }
-    .about-img { min-height: 400px; clip-path: none; }
-    .hero h1 { font-size: 3rem; }
-    .gallery-grid { column-count: 1; }
-    footer { flex-direction: column; gap: 30px; text-align: center; }
+.footer-logo {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--gold);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
 }
+
+.about-col p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Иконки соцсетей */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--gold);
+    color: #011810;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Заголовки колонок */
+.footer-col h3 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Декоративная линия под заголовком */
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+}
+
+/* Ссылки навигации */
+.links-col ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.links-col a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.links-col a:hover {
+    color: var(--gold);
+    transform: translateX(10px); /* Ссылка красиво "выезжает" вправо при наведении */
+}
+
+/* Контакты */
+.contacts-col p {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.contacts-col span {
+    font-size: 1.2rem;
+}
+
+/* Копирайт */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.3);
+    color: rgba(245, 245, 220, 0.5); /* Полупрозрачный текст */
+    font-size: 0.9rem;
+}
+
+
+
+/* Адаптивность подвала */
+    .footer-container {
+        text-align: center; /* Центрируем весь текст */
+        gap: 40px;
+    }
+    .footer-col h3::after {
+        left: 50%; /* Центрируем золотую линию */
+        transform: translateX(-50%);
+    }
+    .social-links {
+        justify-content: center; /* Центрируем кнопки соцсетей */
+    }
+    .contacts-col p {
+        justify-content: center; /* Центрируем контакты */
+    }
+
+
+
+
+
+
 
 /* ================= ПЛАВАЮЩИЙ QR-КОД ================= */
 .qr-code {
