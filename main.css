@@ -10,7 +10,6 @@
     --font-text: 'Montserrat', sans-serif;
 }
 
-/* Кастомный курсор-орнамент (через SVG) */
 * {
     margin: 0;
     padding: 0;
@@ -117,36 +116,10 @@ body {
 .pattern:nth-child(3) { left: 60%; animation-duration: 22s; animation-delay: -10s; }
 .pattern:nth-child(4) { left: 80%; animation-duration: 18s; animation-delay: -2s; font-size: 5rem; }
 
- /* ================= ШАПКА ================= 
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    backdrop-filter: blur(10px);
-    background: linear-gradient(to bottom, rgba(1, 34, 23, 0.9), transparent);
-}
-.logo {
-    font-family: var(--font-title);
-    font-size: 2.5rem;
-    color: var(--gold);
-    text-decoration: none;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-.lang-phone {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    font-weight: 600;
-} */
 
 
-/* ================= НОВЫЙ ЧИСТЫЙ ХЕДЕР ================= */
+
+/* ================= НОВЫЙ ХЕДЕР ================= */
 .main-header {
     position: fixed;
     top: 0;
@@ -170,7 +143,6 @@ header {
     letter-spacing: 2px;
 }
 
-/* --- ПК ВЕРСИЯ --- */
 .desktop-menu {
     display: flex;
     gap: 30px;
@@ -200,19 +172,18 @@ header {
     color: var(--gold);
 }
 
-/* --- МОБИЛЬНЫЙ БУРГЕР И МЕНЮ --- */
 .menu-checkbox {
     display: none;
 }
 
 .hamburger {
-    display: none; /* Скрыто на ПК */
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 20px;
     cursor: pointer;
-    z-index: 2001; /* Поверх всплывающего меню */
+    z-index: 2001;
 }
 
 .hamburger .line {
@@ -227,7 +198,7 @@ header {
 .mobile-overlay {
     position: fixed;
     top: 0;
-    right: -100%; /* Спрятано за экраном */
+    right: -100%;
     width: 100vw;
     height: 100vh;
     background: rgba(1, 34, 23, 0.98);
@@ -358,7 +329,7 @@ header {
     background: var(--gold-light);
 }
 
-/* ================= БЛОК 2: ФИЛОСОФИЯ (Сплит) ================= */
+/* ================= БЛОК 2: ФИЛОСОФИЯ  ================= */
 .about {
     display: flex;
     min-height: 80vh;
@@ -392,7 +363,7 @@ header {
     color: var(--beige);
 }
 
-/* ================= БЛОК: НАШИ ЗАЛЫ (ВИДЕО-ХАК С ВНУТРЕННИМ ФОТО) ================= */
+/* ================= БЛОК: НАШИ ЗАЛЫ  ================= */
 .halls-section {
     padding: 100px 20px;
     background: #000;
@@ -567,7 +538,7 @@ header {
 
 
 
-/* ================= БЛОК 3: ИНТЕРАКТИВНОЕ МЕНЮ (Сайдбар) ================= */
+/* ================= БЛОК 3: ИНТЕРАКТИВНОЕ МЕНЮ ================= */
 .menu-section {
     padding: 100px 20px;
     /* background: var(--emerald-dark); */
@@ -734,6 +705,60 @@ input[type="radio"] { display: none; }
     }
 }
 
+/* --- КОНТЕЙНЕР ДЛЯ КАРТОЧЕК МЕНЮ  --- */
+.menu-content { 
+    display: none; /* Скрыто по умолчанию */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Автоматическая сетка карточек */
+    gap: 25px; 
+    
+    /* ВЕРТИКАЛЬНЫЙ СКРОЛЛ */
+    max-height: 1000px; /* Ограничиваем высоту блока меню */
+    overflow-y: auto; /* Включаем скролл вниз */
+    padding: 10px 15px 30px 5px; 
+    align-content: start; /* Чтобы карточки прижимались к верху, если их мало */
+}
+
+/* --- КРАСИВЫЙ ЗОЛОТОЙ ПОЛЗУНОК СКРОЛЛА --- */
+.menu-content::-webkit-scrollbar {
+    width: 6px; /* Делаем его тонким и изящным */
+}
+.menu-content::-webkit-scrollbar-track {
+    background: rgba(2, 62, 42, 0.3); /* Цвет дорожки */
+    border-radius: 10px;
+}
+.menu-content::-webkit-scrollbar-thumb {
+    background: var(--gold); /* Цвет самого ползунка */
+    border-radius: 10px;
+}
+.menu-content::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-light); 
+}
+
+/* Связь радио-кнопок (ОЧЕНЬ ВАЖНО: возвращаем display: grid) */
+#tab1:checked ~ .menu-layout .menu-content-area .content1,
+#tab2:checked ~ .menu-layout .menu-content-area .content2,
+#tab3:checked ~ .menu-layout .menu-content-area .content3,
+#tab4:checked ~ .menu-layout .menu-content-area .content4,
+#tab5:checked ~ .menu-layout .menu-content-area .content5,
+#tab6:checked ~ .menu-layout .menu-content-area .content6,
+#tab7:checked ~ .menu-layout .menu-content-area .content7,
+#tab8:checked ~ .menu-layout .menu-content-area .content8,
+#tab9:checked ~ .menu-layout .menu-content-area .content9,
+#tab10:checked ~ .menu-layout .menu-content-area .content10,
+#tab11:checked ~ .menu-layout .menu-content-area .content11,
+#tab12:checked ~ .menu-layout .menu-content-area .content12,
+#tab13:checked ~ .menu-layout .menu-content-area .content13,
+#tab14:checked ~ .menu-layout .menu-content-area .content14,
+#tab15:checked ~ .menu-layout .menu-content-area .content15 { 
+    display: grid; /* Включаем сетку для карточек */
+    animation: textReveal 0.5s ease; 
+}
+
+/* --- СТИЛИ КАРТОЧЕК БЛЮД ВНУТРИ МЕНЮ --- */
+.menu-content .dish-card {
+    width: 100%; /* Теперь карточка гибко заполняет свою колонку */
+    /* Никаких жестких ширин и scroll-snap, они сами выстроятся по сетке */
+}
 
 /* ================= БЛОК: БЛЮДА НЕДЕЛИ (СЛАЙДЕР) ================= */
 .week-specials {
@@ -900,7 +925,7 @@ input[type="radio"] { display: none; }
     color: var(--emerald-dark);
 }
 
-/* --- Стрелочки слайдера --- */
+
 .slider-arrow {
     background: var(--gold);
     color: var(--emerald-dark);
@@ -929,7 +954,7 @@ input[type="radio"] { display: none; }
 .prev-arrow { left: -20px; }
 .next-arrow { right: -20px; }
 
-/* --- Адаптивность для телефона --- */
+
 @media (max-width: 900px) {
     .slider-arrow {
         display: none; /* Прячем стрелки на телефоне (там скролл пальцем) */
@@ -1006,8 +1031,8 @@ input[type="radio"] { display: none; }
 
 /* Стили самой фотографии */
 .gallery-item {
-    width: 350px; /* Ширина одной карточки */
-    height: 250px;
+    width: 550px; /* Ширина одной карточки */
+    height: 350px;
     border-radius: 15px;
     overflow: hidden;
     position: relative;
@@ -1086,7 +1111,7 @@ input[type="radio"] { display: none; }
     gap: 60px;
 }
 
-/* --- Левая часть: Текст --- */
+
 .about__text {
     flex: 1;
     text-align: left;
@@ -1136,7 +1161,7 @@ input[type="radio"] { display: none; }
     min-width: 130px;
 }
 
-/* --- Правая часть: Карта --- */
+
 .map-wrapper-side {
     flex: 1;
     min-width: 300px;
@@ -1188,7 +1213,7 @@ input[type="radio"] { display: none; }
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
-/* --- Адаптивность для телефона --- */
+
 @media (max-width: 900px) {
     .about__content {
         flex-direction: column;
