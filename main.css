@@ -11,10 +11,13 @@
 }
 
 * {
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23D4AF37" stroke-width="2"><circle cx="12" cy="12" r="6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>') 12 12, auto;
+    
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><text x="11" y="28" font-size="32" fill="rgba(0,0,0,0.5)" transform="rotate(-20, 20, 20)">⚜</text><text x="10" y="26" font-size="32" fill="%23D4AF37" transform="rotate(-20, 20, 20)">⚜</text></svg>') 12 8, auto;
+
 }
 
 
@@ -114,9 +117,9 @@ body {
     position: absolute;
     color: var(--gold);
     font-family: var(--font-title);
-    font-size: 4rem;
+    font-size: 12rem;
     opacity: 0;
-    animation: floatBg 15s linear infinite;
+    animation: floatBg 10s linear infinite;
 }
 .pattern:nth-child(1) { left: 10%; animation-duration: 20s; animation-delay: 0s; }
 .pattern:nth-child(2) { left: 30%; animation-duration: 16s; animation-delay: -5s; font-size: 3rem; }
