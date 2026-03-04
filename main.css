@@ -17,6 +17,13 @@
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23D4AF37" stroke-width="2"><circle cx="12" cy="12" r="6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>') 12 12, auto;
 }
 
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; 
+}
+
+
 body {
     font-family: var(--font-text);
     background-color: var(--emerald-dark);
@@ -199,7 +206,7 @@ body {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background: rgba(1, 34, 23, 0.98);
     backdrop-filter: blur(15px);
@@ -1120,7 +1127,7 @@ input[type="radio"] { display: none; }
 
 /* Контейнер строки (скрывает вылезающие элементы) */
 .gallery-row {
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
     margin-bottom: 30px;
     position: relative;
