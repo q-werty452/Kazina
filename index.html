@@ -1405,7 +1405,10 @@
         
         <div class="cart-header">
             <h2>Ваш заказ</h2>
-            <button class="close-cart" id="cartCloseBtn">✖</button>
+            <div class="cart-header-actions">
+                <button class="clear-cart-btn" id="clearCartBtn" title="Очистить корзину">🗑</button>
+                <button class="close-cart" id="cartCloseBtn">✖</button>
+            </div>
         </div>
 
         <div class="cart-items" id="cartItemsContainer">
@@ -1598,15 +1601,16 @@
 
 
 <script>
-    // === ЛОГИКА КОРЗИНЫ ===
+   // === ЛОГИКА КОРЗИНЫ (С ГРУППИРОВКОЙ) ===
     const cartOverlay = document.getElementById('cartOverlay');
     const cartOpenBtn = document.getElementById('cartOpenBtn');
     const cartCloseBtn = document.getElementById('cartCloseBtn');
+    const clearCartBtn = document.getElementById('clearCartBtn');
     const cartItemsContainer = document.getElementById('cartItemsContainer');
     const cartBadge = document.getElementById('cartBadge');
     const cartTotalSum = document.getElementById('cartTotalSum');
     
-    let cart = []; // Массив, где хранятся добавленные блюда
+    let cart = []; // Массив для блюд
 
     // Открытие/Закрытие корзины
     cartOpenBtn.addEventListener('click', () => cartOverlay.classList.add('active'));
@@ -1615,61 +1619,119 @@
         if(e.target === cartOverlay) cartOverlay.classList.remove('active');
     });
 
-    // Функция отрисовки корзины (обновление визуала)
+    // Функция обновления визуала
     function updateCartUI() {
-        cartItemsContainer.innerHTML = ''; // Очищаем контейнер
+        cartItemsContainer.innerHTML = ''; 
         let total = 0;
+        let totalItems = 0; // Считаем общее количество блюд для счетчика в шапке
 
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Ваша корзина пуста</p>';
         } else {
             cart.forEach((item, index) => {
-                total += parseInt(item.price);
+                const itemSum = item.price * item.quantity; // Считаем сумму за позицию
+                total += itemSum;
+                totalItems += item.quantity;
                 
-                // Создаем карточку блюда в корзине
                 const itemHTML = `
                     <div class="cart-item">
                         <img src="${item.img}" class="cart-item-img" alt="food">
                         <div class="cart-item-info">
                             <div class="cart-item-title">${item.name}</div>
-                            <div class="cart-item-price">${item.price} сом</div>
+                            <div class="cart-item-price">${item.price} сом / шт</div>
+                            
+                            <div class="cart-item-qty">
+                                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                                <span class="qty-num">${item.quantity}</span>
+                                <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                            </div>
                         </div>
-                        <button class="remove-item" onclick="removeFromCart(${index})">🗑</button>
+                        
+                        <div style="display:flex; flex-direction:column; align-items:flex-end; gap: 10px;">
+                            <button class="remove-item" onclick="removeFromCart(${index})">✖</button>
+                            <div style="color:var(--gold); font-weight:bold;">${itemSum}</div>
+                        </div>
                     </div>
                 `;
                 cartItemsContainer.insertAdjacentHTML('beforeend', itemHTML);
             });
         }
 
-        // Обновляем счетчики
-        cartBadge.innerText = cart.length;
+        cartBadge.innerText = totalItems;
         cartTotalSum.innerText = total;
     }
 
-    // Функция добавления блюда (вызывается при клике на кнопки в меню)
+    // Изменение количества блюда (+ или -)
+    window.changeQty = function(index, delta) {
+        cart[index].quantity += delta;
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1); // Удаляем, если счетчик дошел до 0
+        }
+        updateCartUI();
+    };
+
+    // Очистка всей корзины
+    clearCartBtn.addEventListener('click', () => {
+        if(cart.length > 0 && confirm('Очистить корзину полностью?')) {
+            cart = [];
+            updateCartUI();
+        }
+    });
+
+    // Добавление в корзину (с проверкой дубликатов)
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
-            e.preventDefault(); // Если это была ссылка, отменяем переход
+            e.preventDefault(); 
             
             const name = this.getAttribute('data-name');
-            const price = this.getAttribute('data-price');
+            const price = parseInt(this.getAttribute('data-price'));
             const img = this.getAttribute('data-img');
 
-            cart.push({ name, price, img }); // Добавляем в массив
-            updateCartUI(); // Обновляем визуал
+            // Проверяем, есть ли уже это блюдо
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1; // Если есть, просто увеличиваем количество
+            } else {
+                cart.push({ name, price, img, quantity: 1 }); // Иначе добавляем новое
+            }
             
-            // Визуальный отклик на кнопке
+            updateCartUI(); 
+            
             const originalText = this.innerText;
             this.innerText = "Добавлено ✓";
             setTimeout(() => this.innerText = originalText, 1500);
         });
     });
 
-    // Функция удаления из корзины
+    // Удаление конкретной позиции (крестик)
     window.removeFromCart = function(index) {
         cart.splice(index, 1);
         updateCartUI();
     };
+
+    // === ОТПРАВКА ЗАКАЗА В WHATSAPP ===
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert('Ваша корзина пуста!');
+            return;
+        }
+
+        let message = "Здравствуйте! ⚜️ Хочу сделать заказ в ресторане «Казына»:\n\n";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const sum = item.price * item.quantity;
+            message += `${index + 1}. ${item.name} (x${item.quantity}) — ${sum} сом\n`;
+            total += sum;
+        });
+
+        message += `\n*Итого к оплате: ${total} сом*\n\nЖду подтверждения заказа!`;
+
+        const phone = "996555123456"; // ТВОЙ НОМЕР
+        const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
 </script>
 
 

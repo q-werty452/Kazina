@@ -1713,6 +1713,58 @@ input[type="radio"] { display: none; }
 .checkout-btn:hover { background: var(--gold-light); transform: translateY(-3px); }
 
 
+/* --- КНОПКИ В ШАПКЕ КОРЗИНЫ --- */
+.cart-header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.clear-cart-btn {
+    background: transparent;
+    border: none;
+    color: #ffc300;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+.clear-cart-btn:hover {
+    transform: scale(1.1);
+    color: #ff1a1a;
+}
+
+/* --- КОНТРОЛЛЕР КОЛИЧЕСТВА (+ / -) --- */
+.cart-item-qty {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 3px 8px;
+    border-radius: 6px;
+    width: fit-content;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+.qty-btn {
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    width: 20px;
+}
+.qty-btn:hover { color: var(--gold-light); }
+.qty-num {
+    color: var(--beige);
+    font-size: 1rem;
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+
 
 
 /* --- КОНТРОЛЛЕРЫ В ШАПКЕ (Корзина + Бургер) --- */
