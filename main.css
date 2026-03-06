@@ -24,6 +24,8 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden; 
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 
@@ -1637,7 +1639,7 @@ input[type="radio"] { display: none; }
     right: -100%; /* Скрыта за правым краем экрана */
     width: 100%;
     max-width: 400px;
-    height: 100vh;
+    height: 100dvh;
     background: var(--emerald-dark);
     border-left: 2px solid var(--gold);
     display: flex;
@@ -1689,6 +1691,7 @@ input[type="radio"] { display: none; }
 /* --- ПОДВАЛ КОРЗИНЫ --- */
 .cart-footer {
     padding: 20px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 30px));
     border-top: 1px dashed rgba(212, 175, 55, 0.3);
     background: #011810;
 }

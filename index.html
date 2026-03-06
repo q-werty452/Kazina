@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Казына — Сокровище вкуса</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚜️</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
 </head>
@@ -23,8 +24,6 @@
     <div class="pattern">✥</div>
 </div>
 
-
-
 <header class="main-header">
     <a href="#" class="logo">КАЗЫНА</a>
     
@@ -36,6 +35,8 @@
         <a href="#contacts">Контакты</a>
         <a href="https://www.instagram.com/kazyna_manas?igsh=MWE5bHZtOWJ4Y3FsYg%3D%3D">Инстаграм</a>
     </nav>
+
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
 
     <div class="header-right-section">
         
@@ -67,12 +68,6 @@
 
     </div>
 
-
-    
-
-
-
-
     <div class="mobile-overlay">
         <nav class="mobile-nav">
             <a href="#home">Главная</a>
@@ -93,8 +88,7 @@
 
 
 
-
-<section class="hero">
+<section class="hero" id="home">
     <h1>Сокровище вкуса<br>и истинных традиций</h1>
     <p>Гостеприимство предков в современной атмосфере</p>
     <div>
@@ -204,7 +198,7 @@
     </div>
 </section>
 
-<section class="menu-section">
+<section class="menu-section" id="menu">
     <h2 class="specials-title"><span>❖</span> Наше меню<span>❖</span></h2>
     
     <input type="radio" id="tab1" name="menu-tab" checked>
@@ -1310,7 +1304,7 @@
 
 
 
-<section class="atmosphere-gallery">
+<section class="atmosphere-gallery" id="atmosphere">
     <h2 class="atmosphere-title">Атмосфера «Казына»</h2>
     <p class="atmosphere-subtitle">Место, где время течет со вкусом</p>
 
@@ -1679,7 +1673,33 @@
 </script>
 
 
+<script>
+    // === ОТПРАВКА ЗАКАЗА В WHATSAPP ===
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert('Ваша корзина пуста! Добавьте блюда, чтобы сделать заказ.');
+            return;
+        }
 
+        // Формируем текст сообщения
+        let message = "Здравствуйте! ⚜️ Хочу сделать заказ в ресторане «Казына»:\n\n";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            message += `${index + 1}. ${item.name} — ${item.price} сом\n`;
+            total += parseInt(item.price);
+        });
+
+        message += `\n*Итого к оплате: ${total} сом*\n\nЖду подтверждения заказа!`;
+
+        // Твой номер WhatsApp (без плюса, только цифры)
+        const phone = "996990727253"; 
+        
+        // Создаем ссылку и открываем WhatsApp
+        const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+</script>
 
 
 

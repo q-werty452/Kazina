@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Меню — Казына</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚜️</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="main.css"> 
@@ -29,18 +30,19 @@
 </div>
 
 
-
 <header class="main-header">
     <a href="#" class="logo">КАЗЫНА</a>
     
     <nav class="desktop-menu">
-        <a href="#home">Главная</a>
-        <a href="#about">О нас</a>
-        <a href="#menu">Меню</a>
-        <a href="#atmosphere">Атмосфера</a>
-        <a href="#contacts">Контакты</a>
+        <a href="index.html#home">Главная</a>
+        <a href="index.html#about">О нас</a>
+        <a href="index.html#menu">Меню</a>
+        <a href="index.html#atmosphere">Атмосфера</a>
+        <a href="index.html#contacts">Контакты</a>
         <a href="https://www.instagram.com/kazyna_manas?igsh=MWE5bHZtOWJ4Y3FsYg%3D%3D">Инстаграм</a>
     </nav>
+
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
 
     <div class="header-right-section">
         
@@ -48,8 +50,6 @@
             <span class="phone">+996 555 123 456</span>
             <span class="lang">KG | RU | EN</span>
         </div>
-
-        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
         
         <div class="header-controls">
             <div class="header-actions">
@@ -72,16 +72,13 @@
 
     </div>
 
-
-
-
     <div class="mobile-overlay">
         <nav class="mobile-nav">
-            <a href="#home">Главная</a>
-            <a href="#about">О нас</a>
-            <a href="#menu">Меню</a>
-            <a href="#atmosphere">Атмосфера</a>
-            <a href="#contacts">Контакты</a>
+            <a href="index.html#home">Главная</a>
+            <a href="index.html#about">О нас</a>
+            <a href="index.html#menu">Меню</a>
+            <a href="index.html#atmosphere">Атмосфера</a>
+            <a href="index.html#contacts">Контакты</a>
         </nav>
         <div class="mobile-contacts">
             <p>📞 +996 555 123 456</p>
@@ -95,7 +92,7 @@
 
 
 
-<section class="menu-section">
+<section class="menu-section" id="menu">
     <h2 class="specials-title"><span>❖</span> Наше меню<span>❖</span></h2>
     
     <input type="radio" id="tab1" name="menu-tab" checked>
@@ -149,216 +146,7 @@
                             <button class="special-btn add-to-cart-btn" 
                                     data-name="Закуска" 
                                     data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
-                                В корзину
-                            </button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="dish-info">
-                        <div class="dish-title">Закуска</div>
-                        <p>Небольшая закуска для компании.</p>
-                        
-                        <div class="special-bottom">
-                            <span class="special-price">220 сом</span>
-                            <button class="special-btn add-to-cart-btn" 
-                                    data-name="Закуска" 
-                                    data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
                                 В корзину
                             </button>
                         </div>
@@ -396,7 +184,178 @@
                             <button class="special-btn add-to-cart-btn" 
                                     data-name="Закуска" 
                                     data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
                                 В корзину
                             </button>
                         </div>
@@ -407,7 +366,7 @@
             </div>
             <div class="menu-content content2">
                 <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
                         <div class="dish-title">Закуска</div>
                         <p>Небольшая закуска для компании.</p>
@@ -417,7 +376,26 @@
                             <button class="special-btn add-to-cart-btn" 
                                     data-name="Закуска" 
                                     data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
                                 В корзину
                             </button>
                         </div>
@@ -428,7 +406,7 @@
             </div>
             <div class="menu-content content3">
                 <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
                         <div class="dish-title">Закуска</div>
                         <p>Небольшая закуска для компании.</p>
@@ -438,7 +416,26 @@
                             <button class="special-btn add-to-cart-btn" 
                                     data-name="Закуска" 
                                     data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
                                 В корзину
                             </button>
                         </div>
@@ -449,7 +446,7 @@
             </div>
             <div class="menu-content content4">
                 <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
                         <div class="dish-title">Закуска</div>
                         <p>Небольшая закуска для компании.</p>
@@ -459,7 +456,26 @@
                             <button class="special-btn add-to-cart-btn" 
                                     data-name="Закуска" 
                                     data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
                                 В корзину
                             </button>
                         </div>
@@ -469,7 +485,7 @@
             </div>
             <div class="menu-content content5">
                 <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
                         <div class="dish-title">Закуска</div>
                         <p>Небольшая закуска для компании.</p>
@@ -479,7 +495,26 @@
                             <button class="special-btn add-to-cart-btn" 
                                     data-name="Закуска" 
                                     data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
                                 В корзину
                             </button>
                         </div>
@@ -489,7 +524,7 @@
             </div>
             <div class="menu-content content6">
                 <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
                         <div class="dish-title">Закуска</div>
                         <p>Небольшая закуска для компании.</p>
@@ -499,7 +534,26 @@
                             <button class="special-btn add-to-cart-btn" 
                                     data-name="Закуска" 
                                     data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
                                 В корзину
                             </button>
                         </div>
@@ -509,7 +563,7 @@
             </div>
             <div class="menu-content content7">
                 <div class="dish-card">
-                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
                         <div class="dish-title">Закуска</div>
                         <p>Небольшая закуска для компании.</p>
@@ -519,7 +573,26 @@
                             <button class="special-btn add-to-cart-btn" 
                                     data-name="Закуска" 
                                     data-price="220" 
-                                    data-img="https://images.unsplash.com/photo-1512058564366-c9e3f1d4b2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
                                 В корзину
                             </button>
                         </div>
@@ -528,6 +601,25 @@
                 </div>
             </div>
             <div class="menu-content content8">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
                 <div class="dish-card">
                     <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
@@ -566,8 +658,46 @@
                         
                     </div>
                 </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
             <div class="menu-content content10">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
                 <div class="dish-card">
                     <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
@@ -606,8 +736,46 @@
                         
                     </div>
                 </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
             <div class="menu-content content12">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
                 <div class="dish-card">
                     <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
@@ -646,6 +814,25 @@
                         
                     </div>
                 </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
             <div class="menu-content content14">
                 <div class="dish-card">
@@ -666,8 +853,46 @@
                         
                     </div>
                 </div>
+
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
             <div class="menu-content content15">
+                <div class="dish-card">
+                    <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="dish-info">
+                        <div class="dish-title">Закуска</div>
+                        <p>Небольшая закуска для компании.</p>
+                        
+                        <div class="special-bottom">
+                            <span class="special-price">220 сом</span>
+                            <button class="special-btn add-to-cart-btn" 
+                                    data-name="Закуска" 
+                                    data-price="220" 
+                                    data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                В корзину
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+
                 <div class="dish-card">
                     <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="dish-info">
@@ -823,7 +1048,33 @@
 
 
 
+<script>
+    // === ОТПРАВКА ЗАКАЗА В WHATSAPP ===
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert('Ваша корзина пуста! Добавьте блюда, чтобы сделать заказ.');
+            return;
+        }
 
+        // Формируем текст сообщения
+        let message = "Здравствуйте! ⚜️ Хочу сделать заказ в ресторане «Казына»:\n\n";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            message += `${index + 1}. ${item.name} — ${item.price} сом\n`;
+            total += parseInt(item.price);
+        });
+
+        message += `\n*Итого к оплате: ${total} сом*\n\nЖду подтверждения заказа!`;
+
+        // Твой номер WhatsApp (без плюса, только цифры)
+        const phone = "996990727253"; 
+        
+        // Создаем ссылку и открываем WhatsApp
+        const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+</script>
 
 </body>
 </html>
